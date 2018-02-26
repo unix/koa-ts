@@ -1,5 +1,5 @@
 ## koa2-typescript-guide
-the best practice of building Koa2 with TypeScript.
+the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 
 ### usage
