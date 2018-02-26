@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/chai": "^4.1.2",
+    "@types/chai-http": "^3.0.4",
     "@types/kcors": "^2.2.2",
     "@types/koa": "^2.0.43",
     "@types/koa-bodyparser": "^4.2.0",
