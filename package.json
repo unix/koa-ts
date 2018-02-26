@@ -1,0 +1,75 @@
+{
+  "name": "koa2-typescript-guide",
+  "version": "0.1.0",
+  "description": "the best practice of building Koa2 with TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "cover:local": "nyc mocha;open coverage/lcov-report/index.html",
+    "cover:hook": "nyc mocha;cat ./coverage/lcov.info | coveralls",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "start": "export NODE_ENV=development; ts-node app.ts",
+    "build": "npm run lint && tsc",
+    "ci": "npm run test && npm run lint",
+    "clean": "npm run clean:build",
+    "clean:build": "rm -rf dist"
+  },
+  "author": "DhyanaChina",
+  "bugs": {
+    "url": "https://github.com/DhyanaChina/koa2-typescript-guide/issues"
+  },
+  "engines": {
+    "node": ">= 7.6"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/kcors": "^2.2.2",
+    "@types/koa": "^2.0.43",
+    "@types/koa-bodyparser": "^4.2.0",
+    "@types/koa-logger": "^3.1.0",
+    "@types/koa-router": "^7.0.27",
+    "@types/mocha": "^2.2.48",
+    "@types/mongoose": "^5.0.1",
+    "@types/node": "^9.4.0",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "coveralls": "^3.0.0",
+    "mocha": "^5.0.0",
+    "nyc": "^11.4.1",
+    "ts-node": "^4.1.0",
+    "typescript": "^2.7.1"
+  },
+  "nyc": {
+    "include": [
+      "test/**/*.ts"
+    ],
+    "exclude": [
+      "typings",
+      "**/*.nyc.ts"
+    ],
+    "extension": [
+      ".ts",
+      ".js"
+    ],
+    "require": [
+      "./node_modules/ts-node"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "cache": false,
+    "report-dir": "./coverage",
+    "all": true
+  },
+  "dependencies": {
+    "kcors": "^2.2.1",
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-custom-response": "^0.2.2",
+    "koa-logger": "^3.1.0",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.0.3"
+  }
+}
