@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationDir": "./@types",
+    "sourceMap": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/koa-custom-response/typings/response.d.ts",
+      "typings"
+    ]
+  },
+  "compileOnSave": false,
+  "includes": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
