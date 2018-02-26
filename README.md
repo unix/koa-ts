@@ -2,7 +2,7 @@
 the best practice of building Koa2 with TypeScript.
 
 
-### Usage
+### usage
 
 1. clone repo. `git clone git@github.com:DhyanaChina/koa2-typescript-guide.git`
 2. install dependencies. `npm i`
@@ -24,7 +24,7 @@ the best practice of building Koa2 with TypeScript.
     └── apis                ---  test cases
 ```
 
-### Feature
+### feature
 
 - separation configuration and business logic.
 
