@@ -68,7 +68,7 @@
     "kcors": "^2.2.1",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
-    "koa-custom-response": "^0.2.2",
+    "koa-custom-response": "^0.3.1",
     "koa-logger": "^3.1.0",
     "koa-router": "^7.4.0",
     "mongoose": "^5.0.3"

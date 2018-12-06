@@ -2,10 +2,10 @@ import * as Koa from 'koa'
 import * as kcors from 'kcors'
 import * as bodyParser from 'koa-bodyparser'
 import * as logger from 'koa-logger'
-import * as KoaCustomResponse from 'koa-custom-response'
+import { KoaCustomResponse } from 'koa-custom-response'
 import { router } from './routers'
 import { Environment } from './environments'
-import './connection'
+// import './connection'
 
 export const createServer = async(): Promise<any> => {
   const app = new Koa()
