@@ -7,6 +7,8 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 1. clone repo. `git clone git@github.com:DhyanaChina/koa2-typescript-guide.git`
 2. install dependencies. `npm i`
 3. configuring database information.
+4. the docs about `koa-custom-response`，plaese see: [koa-custom-response](https://github.com/DhyanaChina/koa-custom-response)
+
 
 ### catalog
 
