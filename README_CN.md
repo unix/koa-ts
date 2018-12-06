@@ -7,6 +7,7 @@
 1. clone 项目. `git clone git@github.com:DhyanaChina/koa2-typescript-guide.git`
 2. 安装依赖. `npm i`
 3. 配置你的数据库信息，在 `config/connection.ts` 中。（不使用数据库请移除相关代码）
+4. 有关 `koa-custom-response` 文档，请看这里：[koa-custom-response](https://github.com/DhyanaChina/koa-custom-response)
 
 ### 目录
 
