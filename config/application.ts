@@ -3,9 +3,10 @@ import * as Koa from 'koa'
 import * as controllers from '../app/controllers'
 import * as interceptors from './interceptors'
 import { Container } from 'typedi'
-import { useKoaServer, useContainer } from 'routing-controllers'
 import { useMiddlewares } from './middlewares'
-import './connection'
+import { useKoaServer, useContainer } from 'routing-controllers'
+
+// import './connection'
 
 const objectToArray = (dict: object): Array<any> =>
   Object.keys(dict).map(name => dict[name])

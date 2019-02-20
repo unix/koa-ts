@@ -9,8 +9,8 @@ import {
  * How to auto validaing? see: https://github.com/typestack/routing-controllers#auto-validating-action-params
  */
 
-@Entity()
-export class Sessions extends BaseEntity {
+@Entity('sessions')
+export class Session extends BaseEntity {
   
   @ObjectIdColumn()
   id: string
