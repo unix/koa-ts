@@ -1,18 +1,23 @@
 {
-  "name": "cli",
-  "version": "0.1.0",
+  "name": "koa2-ts",
+  "version": "0.1.2",
   "main": "./dist/bin/koa2-ts.js",
   "bin": {
     "koa2-ts": "./dist/bin/koa2-ts.js"
   },
   "scripts": {
     "start": "tsc -w --skipLibCheck -p ./",
-    "build": "tsc -p ./"
+    "build": "tsc --skipLibCheck -p ./"
   },
+  "files": [
+    "dist",
+    "tsconfig.json"
+  ],
   "author": "WittBulter (nanazuimeng123@gmail.com)",
   "license": "MIT",
   "dependencies": {
     "download-git-repo": "^1.1.0",
+    "execa": "^1.0.0",
     "node-fetch": "^2.3.0"
   },
   "devDependencies": {
