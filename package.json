@@ -1,6 +1,6 @@
 {
   "name": "koa2-typescript-guide",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "the best practice of building Koa2 with TypeScript",
   "main": "app.ts",
   "scripts": {
@@ -27,10 +27,7 @@
     "@types/kcors": "^2.2.2",
     "@types/koa": "^2.0.43",
     "@types/koa-bodyparser": "^4.2.0",
-    "@types/koa-logger": "^3.1.0",
-    "@types/koa-router": "^7.0.27",
     "@types/mocha": "^2.2.48",
-    "@types/mongoose": "^5.0.1",
     "@types/node": "^9.4.0",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
@@ -38,7 +35,8 @@
     "mocha": "^5.0.0",
     "nodemon": "^1.18.10",
     "nyc": "^11.4.1",
-    "ts-node": "^8.0.2"
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3"
   },
   "nyc": {
     "include": [
@@ -68,16 +66,13 @@
     "kcors": "^2.2.1",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
-    "koa-custom-response": "^0.3.1",
     "koa-logger": "^3.1.0",
     "koa-multer": "^1.0.2",
     "koa-router": "^7.4.0",
-    "mongoose": "^5.0.3",
     "node-env-file": "^0.1.8",
     "reflect-metadata": "^0.1.13",
     "routing-controllers": "^0.7.7",
     "typedi": "^0.8.0",
-    "typeorm": "^0.2.13",
-    "typescript": "^3.3.3"
+    "typeorm": "^0.2.13"
   }
 }
