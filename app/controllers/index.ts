@@ -1,2 +1,2 @@
-export * from './session.controller'
+export { SessionsController } from './sessions.controller'
 

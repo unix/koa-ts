@@ -1,16 +1,14 @@
 export default {
-  
   identity: 'test',
   
   port: 3000,
   
   mongo: {
-    adapter: 'test',
-    host: '127.0.0.1',
-    port: 27017,
-    user: 'test',
-    password: 'test',
-    database: 'test',
+    MONGODB_HOST: '127.0.0.1',
+    MONGODB_PORT: 27017,
+    MONGODB_USER: '',
+    MONGODB_PASS: '',
+    MONGODB_DATABASE: '',
   },
   
 }

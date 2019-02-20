@@ -1,24 +1,26 @@
+import 'reflect-metadata'
 import * as Koa from 'koa'
-import * as kcors from 'kcors'
-import * as bodyParser from 'koa-bodyparser'
-import * as logger from 'koa-logger'
-import { KoaCustomResponse } from 'koa-custom-response'
-import { router } from './routers'
-import { Environment } from './environments'
-// import './connection'
+import * as controllers from '../app/controllers'
+import * as interceptors from './interceptors'
+import { Container } from 'typedi'
+import { useKoaServer, useContainer } from 'routing-controllers'
+import { useMiddlewares } from './middlewares'
+import './connection'
 
-export const createServer = async(): Promise<any> => {
-  const app = new Koa()
+const objectToArray = (dict: object): Array<any> =>
+  Object.keys(dict).map(name => dict[name])
+
+export const createServer = async(): Promise<Koa> => {
+  const koa: Koa = new Koa()
   
-  app.use(kcors())
+  const app: Koa = useKoaServer<Koa>(koa, {
+    routePrefix: '/apis',
+    validation: true,
+    interceptors: objectToArray(interceptors),
+    controllers: objectToArray(controllers),
+  })
   
-  Environment.identity !== 'test' && app.use(logger())
+  useContainer(Container)
   
-  app.use(bodyParser())
-  
-  app.use(KoaCustomResponse())
-  
-  app.use(router.routes()).use(router.allowedMethods())
-  
-  return app
+  return useMiddlewares(app)
 }
