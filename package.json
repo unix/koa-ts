@@ -1,8 +1,8 @@
 {
   "name": "koa2-typescript-guide",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "the best practice of building Koa2 with TypeScript",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
     "test": "mocha",
     "cover:local": "nyc mocha;open coverage/lcov-report/index.html",
