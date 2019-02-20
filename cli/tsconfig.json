@@ -1,0 +1,19 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": false,
+    "outDir": "./dist",
+    "lib": ["es7"],
+    "rootDir": "./"
+  },
+  "include": [
+    "./bin/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
