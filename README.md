@@ -1,38 +1,62 @@
-## koa2-typescript-guide
+### koa2-typescript-guide
 the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
+<br>
 
-### usage
+#### Usage
+**required [NodeJS > 8.0](https://nodejs.org/)**
 
-1. clone repo. `git clone git@github.com:DhyanaChina/koa2-typescript-guide.git`
-2. install dependencies. `npm i`
-3. configuring database information.
-4. the docs about `koa-custom-response`，plaese see: [koa-custom-response](https://github.com/DhyanaChina/koa-custom-response)
+1. Run `npx koa2-ts --name=hello`.
 
+2. Install dependencies: `npm i`.
 
-### catalog
+3. **[Optional]** if you need database, uncomment in `application.ts`:
+```ts
+// in application.ts
+import './connection'
+```
+
+4. **[Optional]** the project has built-in a docker-compose, run `npm run mongo` lift mongodb automatic.
+<br>
+
+### Catalog
 
 ```
 ├── app
 │   ├── controllers         ---  contoller
-│   ├── helpers             ---  helper func
-│   ├── jobs                ---  periodic task
-│   ├── models              ---  database model
+│   ├── helpers             ---  helper func (interceptor / error handler / validator...)
+│   ├── jobs                ---  task (periodic task / trigger task / email server...)
+│   ├── entities            ---  database entity (model)
 │   └── services            ---  adhesive controller and model
 ├── config
 │   ├── environments        ---  environment variable
-│   └── routers             ---  routing configuration file
+│   ├── middlewares         ---  middleware config of Koa
+│   ├── connection          ---  database connection
+│   └── interceptors        ---  global interceptor
 └── test
     └── apis                ---  test cases
 ```
 
-### feature
+<br>
 
-- separation configuration and business logic.
+### Feature
 
-- export scheme model and interface, keep the TypeScript style.
+- Separation configuration and business logic.
 
-- the minimalist rustful grammar, reduce the weight of the contoller.
+- Export scheme model and interface, follow style of TypeScript.
 
-- test cases and more scientific lint configuration.
+- Test cases and lint configuration.
 
+- The best practice for Dependency Injection in Koa project.
+
+<br>
+
+### Reference
+- [routing-controller](https://github.com/typestack/routing-controllers)
+- [typedi](https://github.com/typestack/typedi)
+- [typeorm](https://github.com/typeorm/typeorm)
+
+<br>
+
+### LICENSE
+Licensed under the [MIT LICENSE](https://github.com/zeit-ui/vue/blob/master/LICENSE).

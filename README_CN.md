@@ -1,37 +1,65 @@
 ## koa2-typescript-guide
 使用 TypeScript 构建 Koa2 项目的最佳实践.
 
+<br>
 
 ### 使用
+**项目依赖: [NodeJS > 8.0](https://nodejs.org/cn)**
 
-1. clone 项目. `git clone git@github.com:DhyanaChina/koa2-typescript-guide.git`
-2. 安装依赖. `npm i`
-3. 配置你的数据库信息，在 `config/connection.ts` 中。（不使用数据库请移除相关代码）
-4. 有关 `koa-custom-response` 文档，请看这里：[koa-custom-response](https://github.com/DhyanaChina/koa-custom-response)
+1. 在终端输入: `npx koa2-ts --name=hello`。
+
+2. 安装依赖: `npm i`。
+
+3. **[可选]** 如果你需要数据库，请打开 `application.ts` 中的注释:
+```ts
+// in application.ts
+import './connection'
+```
+
+4. **[可选]** 项目内置了 docker-compose 数据库，可以使用 `npm run mongo` 来尝试自动挂起。
+
+<br>
 
 ### 目录
 
 ```
 ├── app
 │   ├── controllers         ---  控制器
-│   ├── helpers             ---  帮助工具集
-│   ├── jobs                ---  定时任务
-│   ├── models              ---  数据库 model
-│   └── services            ---  controller 与 model 的粘合层 (提拱一些实用方法，屏蔽底层操作...)
+│   ├── helpers             ---  帮助工具集 (拦截器、错误集、验证等)
+│   ├── jobs                ---  任务 (定时任务、触发任务、邮件任务等)
+│   ├── entities            ---  数据实体，数据库模型文件
+│   └── services            ---  controller 与 model 的粘合层 (提拱一些实用方法...)
 ├── config
 │   ├── environments        ---  环境变量
-│   └── routers             ---  路由配置文件
+│   ├── middlewares         ---  Koa 中间件配置
+│   ├── connection          ---  数据库连接
+│   └── interceptors        ---  全局的拦截器
 └── test
     └── apis                ---  测试用例
 ```
 
-### feature
+<br>
+
+### 特性
 
 - 业务逻辑与配置分离，一目了然。
 
-- 同时导出 scheme model 与 interface，更符合 TS 的代码风格。
+- scheme model 等同于 interface，更符合 TS 的代码风格。
 
-- 非常小巧的 RUSTful 语法糖, 有助于减轻控制器重量。
+- 依赖注入在 Koa 项目中的最佳实践。
 
-- 测试相关与更严谨的 Lint。
+- 测试与 Lint。
 
+
+<br>
+
+### 文档参考
+
+- [routing-controller](https://github.com/typestack/routing-controllers)
+- [typedi](https://github.com/typestack/typedi)
+- [typeorm](https://github.com/typeorm/typeorm)
+
+<br>
+
+### LICENSE
+[MIT](LICENSE)
