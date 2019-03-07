@@ -8,13 +8,9 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 1. Run `npx koa2-ts --name=hello`.
 
-2. Install dependencies: `npm i`.
+2. Install dependencies: `yarn` or `npm i`.
 
-3. **[Optional]** if you need database, uncomment in `application.ts`:
-```ts
-// in application.ts
-import './connection'
-```
+3. **[Optional]** if you need database, set *useMongoDB* to true.(in configs/customs.ts)
 
 4. **[Optional]** the project has built-in a docker-compose, run `npm run mongo` lift mongodb automatic.
 <br>
@@ -32,6 +28,7 @@ import './connection'
 │   ├── environments        ---  environment variable
 │   ├── middlewares         ---  middleware config of Koa
 │   ├── connection          ---  database connection
+│   ├── customs             ---  user settings
 │   └── interceptors        ---  global interceptor
 └── test
     └── apis                ---  test cases

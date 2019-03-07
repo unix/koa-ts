@@ -8,13 +8,9 @@
 
 1. 在终端输入: `npx koa2-ts --name=hello`。
 
-2. 安装依赖: `npm i`。
+2. 安装依赖: `yarn` 或 `npm i`。
 
-3. **[可选]** 如果你需要数据库，请打开 `application.ts` 中的注释:
-```ts
-// in application.ts
-import './connection'
-```
+3. **[可选]** 如果你需要数据库，请设置 `useMongoDB = true`。(在 configs/customs.ts 文件中)
 
 4. **[可选]** 项目内置了 docker-compose 数据库，可以使用 `npm run mongo` 来尝试自动挂起。
 
@@ -33,6 +29,7 @@ import './connection'
 │   ├── environments        ---  环境变量
 │   ├── middlewares         ---  Koa 中间件配置
 │   ├── connection          ---  数据库连接
+│   ├── customs             ---  用户的全局配置
 │   └── interceptors        ---  全局的拦截器
 └── test
     └── apis                ---  测试用例
