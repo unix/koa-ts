@@ -1,19 +1,17 @@
 import development from './development'
 import production from './production'
-import test from './test'
 const envFile = require('node-env-file')
 const path = require('path')
-
 const isProd = process.env.NODE_ENV === 'production'
-const isTest = process.env.NODE_ENV === 'test'
 
 
 // use variables.env file first.
-const env = isTest ? test : (isProd ? production : development)
+const env = isProd ? production : development
 const secrets = envFile(path.join(__dirname, '../../variables.env'))
 Object.keys(secrets).forEach(name => {
   if (!secrets[name]) return
-  env.mongo[name] = secrets[name]
+  if (name.startsWith('MONGODB')) env.mongo[name] = secrets[name]
+  env[name] = secrets[name]
 })
 
 

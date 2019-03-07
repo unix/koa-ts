@@ -1,5 +1,5 @@
-import { createServer } from './config/application'
-import { Environment } from './config/environments'
+import { createServer } from './configs/application'
+import { Environment } from './configs/environments'
 import { Server } from 'http'
 
 module.exports = (async(): Promise<Server> => {

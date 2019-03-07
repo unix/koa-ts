@@ -1,6 +1,5 @@
 import { Body, Get, JsonController, Post, QueryParam, UseInterceptor } from 'routing-controllers'
 import { SessionsService } from '../services'
-import { Interceptors } from '../helpers'
 import { Session } from '../entities'
 
 
@@ -8,19 +7,19 @@ import { Session } from '../entities'
 export class SessionsController {
   
   constructor(
-    private sessionsService: SessionsService,
+    // private sessionsService: SessionsService,
   ) {
   }
   
   @Get('/sessions')
-  @UseInterceptor(Interceptors.MessageInterceptor)
   async session(@QueryParam('username') username: string): Promise<any> {
     return 'hello'
   }
   
-  @Post('/sessions')
-  async create(@Body() session: Session): Promise<any> {
-    const created = await this.sessionsService.create(session)
-    return { message: 'ok', created }
-  }
+  // If your need to use database, please set useMongoDB(in configs/customs.ts) to true.
+  // @Post('/sessions')
+  // async create(@Body() session: Session): Promise<any> {
+  //   const created = await this.sessionsService.create(session)
+  //   return { created }
+  // }
 }
