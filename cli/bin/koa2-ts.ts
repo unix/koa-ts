@@ -2,7 +2,6 @@
 const fs = require('fs')
 const path = require('path')
 const execa = require('execa')
-const fetch = require('node-fetch')
 const download = require('download-git-repo')
 const args = process.argv.slice(2)
 const exit = (text: string): void => {
@@ -36,10 +35,10 @@ const installAfter = (project: string, dir: string): void => {
 }
 
 const install = async(): Promise<void> => {
-  const response = await fetch('https://raw.githubusercontent.com/DhyanaChina/koa2-typescript-guide/master/package.json')
+  const response = await require('node-fetch')('https://raw.githubusercontent.com/WittBulter/koa2-typescript-guide/master/package.json')
   const pkg = await response.text()
   const { version } = JSON.parse(pkg)
-  const url = `direct:https://github.com/DhyanaChina/koa2-typescript-guide/archive/v${version}.zip`
+  const url = `direct:https://github.com/WittBulter/koa2-typescript-guide/archive/v${version}.zip`
   console.log(`latest version: v${version}, install...`)
   download(url, to, { clone: false }, (err: any) => {
     if (err) return exit(`${err}. abort.`)
