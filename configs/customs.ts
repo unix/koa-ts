@@ -1,12 +1,12 @@
 import { RoutingControllersOptions } from 'routing-controllers'
-import * as path from 'path'
 import * as interceptors from './interceptors'
+import * as controllers from '../app/controllers'
 const objectToArray = (dict: object): Array<any> =>
   Object.keys(dict).map(name => dict[name])
 
 
 export const routingConfigs: RoutingControllersOptions = {
-  controllers: [path.join(__dirname, '../app/controllers/**/*.ts')],
+  controllers: objectToArray(controllers),
   
   // global interceptors
   interceptors: objectToArray(interceptors),
