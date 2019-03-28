@@ -38,7 +38,7 @@ const install = async(): Promise<void> => {
   const spinner = ora('fetch version...').start()
   let pkg = '{}'
   try {
-    const response = await require('node-fetch')('https://cdn.jsdelivr.net/gh/wittbulter/koa2-typescript-guide@latest/package.json')
+    const response = await require('node-fetch')('https://cdn.jsdelivr.net/gh/wittbulter/koa2-typescript-guide/package.json')
     pkg = await response.text()
     spinner.stop()
     spinner.clear()
@@ -46,7 +46,7 @@ const install = async(): Promise<void> => {
     spinner.fail(err)
   }
   const { version } = JSON.parse(pkg)
-  const url = `direct:https://github.com/WittBulter/koa2-typescript-guide/archive/v${version}.zip`
+  const url = `direct:https://github.com/WittBulter/koa2-typescript-guide/archive/${version}.zip`
   const downloadSpinner = ora(`latest version: v${version}, install...`).start()
   download(url, to, { clone: false }, (err: any) => {
     if (err) {

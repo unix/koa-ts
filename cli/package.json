@@ -1,6 +1,6 @@
 {
   "name": "koa2-ts",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "main": "./dist/bin.js",
   "bin": {
     "koa2-ts": "./dist/bin.js"
