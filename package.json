@@ -1,13 +1,13 @@
 {
   "name": "koa2-typescript-guide",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "the best practice of building Koa2 with TypeScript",
   "main": "app.ts",
   "scripts": {
     "test": "mocha",
     "lint": "tslint -c tslint.yml -p tsconfig.json",
     "start": "export NODE_ENV=development; nodemon --config nodemon.json",
-    "build": "npm run lint && tsc",
+    "build": "yarn run clean && ncc build app.ts",
     "mongo": "docker-compose -f compose.yml up -d",
     "clean": "rm -rf dist"
   },
@@ -25,7 +25,6 @@
     "@haifeng-fe/tslint-config": "^1.0.0",
     "@types/chai": "^4.1.2",
     "@types/chai-http": "^3.0.4",
-    "@types/kcors": "^2.2.2",
     "@types/koa": "^2.0.48",
     "@types/koa-bodyparser": "^4.2.0",
     "@types/mocha": "^2.2.48",
@@ -33,13 +32,14 @@
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "mocha": "^5.0.0",
+    "ncc": "^0.3.6",
     "nodemon": "^1.18.10",
     "pre-commit": "^1.2.2",
     "ts-node": "^8.0.2",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.4000"
   },
   "dependencies": {
-    "kcors": "^2.2.1",
+    "@koa/cors": "^3.0.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.0",
     "koa-logger": "^3.1.0",
