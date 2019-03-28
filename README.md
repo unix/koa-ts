@@ -6,7 +6,7 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 #### Usage
 **required [NodeJS > 8.0](https://nodejs.org/)**
 
-1. Run `npx koa2-ts --name=hello`.
+1. Run `npx koa2-ts --name=hello`. ()
 
 2. Install dependencies: `yarn` or `npm i`.
 
@@ -32,6 +32,7 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 │   └── interceptors        ---  global interceptor
 └── test
     └── apis                ---  test cases
+├── variables.env           ---  environment file
 ```
 
 <br>
@@ -45,6 +46,8 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 - Test cases and lint configuration.
 
 - The best practice for Dependency Injection in Koa project.
+
+- Deploy by ncc.
 
 <br>
 

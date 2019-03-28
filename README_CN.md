@@ -3,16 +3,16 @@
 
 <br>
 
-### 使用
+### 快速开始
 **项目依赖: [NodeJS > 8.0](https://nodejs.org/cn)**
 
-1. 在终端输入: `npx koa2-ts --name=hello`。
+1. 在终端输入: `npx koa2-ts --name=myproject` 即可快速初始化。
 
 2. 安装依赖: `yarn` 或 `npm i`。
 
 3. **[可选]** 如果你需要数据库，请设置 `useMongoDB = true`。(在 configs/customs.ts 文件中)
 
-4. **[可选]** 项目内置了 docker-compose 数据库，可以使用 `npm run mongo` 来尝试自动挂起。
+4. **[可选]** 项目内置了 docker-compose 数据库，可以使用 `npm run mongo` 自动挂起 mongo (如果您已有 docker / docker-compose)。
 
 <br>
 
@@ -26,13 +26,14 @@
 │   ├── entities            ---  数据实体，数据库模型文件
 │   └── services            ---  controller 与 model 的粘合层 (提拱一些实用方法...)
 ├── config
-│   ├── environments        ---  环境变量
+│   ├── environments        ---  环境配置
 │   ├── middlewares         ---  Koa 中间件配置
 │   ├── connection          ---  数据库连接
 │   ├── customs             ---  用户的全局配置
 │   └── interceptors        ---  全局的拦截器
 └── test
     └── apis                ---  测试用例
+├── variables.env           ---  环境变量文件，如果在此文件设置将会覆盖 'config/environments'
 ```
 
 <br>
@@ -46,6 +47,8 @@
 - 依赖注入在 Koa 项目中的最佳实践。
 
 - 测试与 Lint。
+
+- 使用 ncc 单文件部署。
 
 
 <br>
