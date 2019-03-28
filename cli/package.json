@@ -1,9 +1,9 @@
 {
-  "name": "koa-ts",
+  "name": "koa2-ts",
   "version": "0.2.0",
   "main": "./dist/bin.js",
   "bin": {
-    "koa-ts": "./dist/bin.js"
+    "koa2-ts": "./dist/bin.js"
   },
   "scripts": {
     "start": "bash ./dev.sh",
