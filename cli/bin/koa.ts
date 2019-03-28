@@ -1,16 +1,16 @@
-#!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
 const execa = require('execa')
+const ora = require('ora')
 const download = require('download-git-repo')
 const args = process.argv.slice(2)
 const exit = (text: string): void => {
-  console.log(text)
+  ora(text).start().fail()
   process.exit(1)
 }
 
 // check args
-if (!args || !args.length) exit('you need to specify the project name.')
+if (!args || !args.length) exit('you need to specify the project name.\nE.g. --name=myproject')
 const projectName = args[0].startsWith('--name=') ? args[0].split('--name=')[1] : null
 if (!projectName) exit('param not valid. \ne.g.: --name=hello_world')
 const to = path.join(process.cwd(), projectName)
@@ -35,15 +35,27 @@ const installAfter = (project: string, dir: string): void => {
 }
 
 const install = async(): Promise<void> => {
-  const response = await require('node-fetch')('https://raw.githubusercontent.com/WittBulter/koa2-typescript-guide/master/package.json')
-  const pkg = await response.text()
+  const spinner = ora('fetch version...').start()
+  let pkg = '{}'
+  try {
+    const response = await require('node-fetch')('https://cdn.jsdelivr.net/gh/wittbulter/koa2-typescript-guide@latest/package.json')
+    pkg = await response.text()
+    spinner.stop()
+    spinner.clear()
+  } catch (err) {
+    spinner.fail(err)
+  }
   const { version } = JSON.parse(pkg)
   const url = `direct:https://github.com/WittBulter/koa2-typescript-guide/archive/v${version}.zip`
-  console.log(`latest version: v${version}, install...`)
+  const downloadSpinner = ora(`latest version: v${version}, install...`).start()
   download(url, to, { clone: false }, (err: any) => {
-    if (err) return exit(`${err}. abort.`)
+    if (err) {
+      downloadSpinner.stop()
+      downloadSpinner.clear()
+      return exit(`${err}. abort.`)
+    }
     installAfter(projectName, to)
-    console.log('installed successfully.')
+    downloadSpinner.succeed('installed successfully.')
   })
 }
 
