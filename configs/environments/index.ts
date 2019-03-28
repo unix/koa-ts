@@ -1,17 +1,12 @@
 import development from './development'
 import production from './production'
-const envFile = require('node-env-file')
-const path = require('path')
 const isProd = process.env.NODE_ENV === 'production'
-
-
-// use variables.env file first.
 const env = isProd ? production : development
-const secrets = envFile(path.join(__dirname, '../../variables.env'))
-Object.keys(secrets).forEach(name => {
-  if (!secrets[name]) return
-  if (name.startsWith('MONGODB')) env.mongo[name] = secrets[name]
-  env[name] = secrets[name]
+
+
+// Preference of environmental variables.
+Object.keys(env.mongo).forEach(key => {
+  env.mongo[key] = process.env[key] || env.mongo[key]
 })
 
 
