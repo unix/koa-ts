@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import * as Koa from 'koa'
 import * as Customs from './customs'
 import { Container } from 'typedi'
-import { useMiddlewares } from './middlewares'
+import { useMiddlewares } from './koa.middlewares'
 import { useKoaServer, useContainer } from 'routing-controllers'
 if (Customs.useMongoDB) {
   require('./connection')

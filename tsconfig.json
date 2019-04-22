@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "configs": ["configs"],
+      "app": ["app"],
       "services": ["app/services"],
       "controllers": ["app/controllers"],
       "entities": ["app/entities"]
