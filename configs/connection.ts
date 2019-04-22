@@ -1,4 +1,4 @@
-import * as entities from '../app/entities'
+import * as entities from 'entities'
 import { Environment } from './environments'
 import { createConnection } from 'typeorm'
 const mongo = Environment.mongo

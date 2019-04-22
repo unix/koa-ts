@@ -7,9 +7,8 @@
     "test": "mocha",
     "lint": "tslint -c tslint.yml -p tsconfig.json",
     "start": "export NODE_ENV=development; nodemon --config nodemon.json",
-    "build": "yarn run clean && ncc build app.ts",
-    "mongo": "docker-compose -f compose.yml up -d",
-    "clean": "rm -rf dist"
+    "build": "bash ./build.sh",
+    "mongo": "docker-compose -f compose.yml up -d"
   },
   "author": "WittBulter (nanazuimeng123@gmail.com)",
   "bugs": {
@@ -36,6 +35,7 @@
     "nodemon": "^1.18.10",
     "pre-commit": "^1.2.2",
     "ts-node": "^8.0.2",
+    "tsconfig-paths": "^3.8.0",
     "tslint": "^5.14.0",
     "typescript": "^3.3.4000"
   },

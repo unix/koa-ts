@@ -12,8 +12,16 @@
     "typeRoots": [
       "node_modules/@types",
       "typings"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "configs": ["configs"],
+      "services": ["app/services"],
+      "controllers": ["app/controllers"],
+      "entities": ["app/entities"]
+    }
   },
+
   "compileOnSave": false,
   "includes": [
     "src/**/*"

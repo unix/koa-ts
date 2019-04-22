@@ -1,4 +1,5 @@
 import { Body, Get, JsonController, Post, QueryParam, UseInterceptor } from 'routing-controllers'
+import { Environment } from 'configs/environments'
 import { SessionsService } from '../services'
 import { Session } from '../entities'
 
@@ -13,7 +14,8 @@ export class SessionsController {
   
   @Get('/sessions')
   async session(@QueryParam('username') username: string): Promise<any> {
-    return 'hello'
+    
+    return `hello on ${Environment.identity}.`
   }
   
   // If your need to use database, please set useMongoDB(in configs/customs.ts) to true.

@@ -1,6 +1,6 @@
 import { RoutingControllersOptions } from 'routing-controllers'
+import * as controllers from 'controllers'
 import * as interceptors from './interceptors'
-import * as controllers from '../app/controllers'
 const objectToArray = (dict: object): Array<any> =>
   Object.keys(dict).map(name => dict[name])
 
