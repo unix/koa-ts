@@ -15,11 +15,4 @@ Object.keys(parsedEnvs || {}).forEach(key => {
   env[key] = parsedEnvs[key]
 })
 
-
-// must be included mongodb configs in prod mode
-if (isProd && (!env.mongo.MONGODB_USER || !env.mongo.MONGODB_PASS)) {
-  console.error('mongo.production need set MONGODB_USER && MONGODB_PASS')
-  process.exit(1)
-}
-
 export const Environment = env

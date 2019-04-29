@@ -14,5 +14,7 @@ createConnection({
   useNewUrlParser: true,
   entities: Object.keys(entities).map(name => entities[name]),
 })
-.then(() => console.log('mongodb connect success'))
+.then(() => {
+  console.log('\x1b[37m\%s \x1b[2m%s\x1b[0m', '>', 'connected mongodb.')
+})
 .catch(error => console.log(error))
