@@ -47,9 +47,11 @@
 
 - 依赖注入在 Koa 项目中的最佳实践。
 
-- 测试与 Lint。
+- 测试与 Lint 脚手架。
 
 - 使用 ncc 单文件部署。
+
+- TypeScript hotload, 开发便捷。
 
 
 <br>

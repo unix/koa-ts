@@ -50,6 +50,8 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 - Deploy by ncc.
 
+- TypeScript hotload.
+
 <br>
 
 ### Reference
