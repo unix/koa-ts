@@ -79,6 +79,8 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
   
   - **In production** (`NODE_ENV=production`), read configurations from `configs/environments/production.ts` file, but it will still be overwritten by `variables.env` file.
 
+<br>
+
 ### Reference
 
 - [how to validate params](https://github.com/typestack/class-validator)
