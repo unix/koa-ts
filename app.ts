@@ -1,15 +1,15 @@
-import { Environment } from './configs/environments'
-import { createServer } from './configs/application'
 import { Server } from 'http'
+import { print } from 'configs/utils'
+import { Environment } from 'configs/environments'
+import { createServer } from 'configs/application'
+import * as bootstrap from 'configs/bootstrap'
 
 module.exports = (async(): Promise<Server> => {
   try {
     const app = await createServer()
     return app.listen(Environment.port, () => {
-      console.log(
-        '\x1b[37m\%s \x1b[2m%s\x1b[0m', '>',
-        `server listening on ${Environment.port}, in ${Environment.identity} mode.`,
-      )
+      print.log(`server listening on ${Environment.port}, in ${Environment.identity} mode.`)
+      bootstrap.after()
     })
   } catch (e) {
     console.log(e)

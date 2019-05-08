@@ -2,16 +2,15 @@ import { RoutingControllersOptions } from 'routing-controllers'
 import * as controllers from 'controllers'
 import * as middlewares from './routing.middlewares'
 import * as interceptors from './interceptors'
-const objectToArray = (dict: object): Array<any> =>
-  Object.keys(dict).map(name => dict[name])
+import { dictToArray } from './utils'
 
 
 export const routingConfigs: RoutingControllersOptions = {
-  controllers: objectToArray(controllers),
+  controllers: dictToArray(controllers),
   
-  middlewares: objectToArray(middlewares),
+  middlewares: dictToArray(middlewares),
   
-  interceptors: objectToArray(interceptors),
+  interceptors: dictToArray(interceptors),
   
   // router prefix
   // e.g. api => http://hostname:port/{routePrefix}/{controller.method}

@@ -1,10 +1,12 @@
 import * as entities from 'entities'
+import * as bootstrap from './bootstrap'
+import { print } from './utils'
 import { Environment } from './environments'
 import { createConnection } from 'typeorm'
 const mongo = Environment.mongo
 
 
-createConnection({
+const mongoConnect = createConnection({
   type: 'mongodb',
   host: mongo.MONGODB_HOST,
   port: mongo.MONGODB_PORT,
@@ -14,7 +16,11 @@ createConnection({
   useNewUrlParser: true,
   entities: Object.keys(entities).map(name => entities[name]),
 })
-.then(() => {
-  console.log('\x1b[37m\%s \x1b[2m%s\x1b[0m', '>', 'connected mongodb.')
-})
+.then(() => print.log('connected mongodb.'))
+
+
+Promise.all([
+  mongoConnect,
+])
+.then(bootstrap.connected)
 .catch(error => console.log(error))
