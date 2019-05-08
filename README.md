@@ -10,7 +10,7 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 2. Install dependencies: `yarn` or `npm i`.
 
-3. **[Optional]** if you need database, set *useMongoDB* to true.(in configs/customs.ts).
+3. **[Optional]** if you need database, set *useMongoDB* to true.(in `configs/customs.ts`).
 
 4. **[Optional]** the project has built-in a docker-compose, run `npm run mongo` lift mongodb automatic.
 <br>
@@ -26,11 +26,14 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 │   └── services            ---  adhesive controller and model
 ├── config
 │   ├── environments        ---  environment variable
-│   ├── middlewares         ---  middleware config of Koa
+│   ├── koa.middlewares     ---  middlewares for Koa
+│   ├── routing.middlewares ---  middlewares for Routing Controller
+│   ├── routing.options     ---  configs for Routing Controller
 │   ├── connection          ---  database connection
-│   ├── bootstrap           ---  start task
+│   ├── bootstrap           ---  lifecycle
 │   ├── customs             ---  user settings
 │   └── interceptors        ---  global interceptor
+│   └── utils               ---  pure functions for help
 └── test
     └── apis                ---  test cases
 ├── variables.env           ---  environment file
@@ -54,7 +57,31 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 <br>
 
+### Lifecycle
+
+  1. `app.ts` -> collect env vars `environments` -> coolect env files `variables.env`
+    
+  2. envs ready, call `bootstrap.before()`
+  
+  3. `configs/connection.ts` connecting external services (e.g. DB / Redis...)
+  
+  4. lift `routing-controllers` -> lift Koa middlewares -> register `Container` for DI
+  
+  5. start `Koa`。invoke `bootstrap.after()` after startup
+  
+  6. `configs/connection.ts` connected -> invoke `bootstrap.connected()`
+
+<br>
+
+### About Environments
+
+  - **In development** (`NODE_ENV=development`), read configurations from `configs/environments/development.ts` file, but it will still be overwritten by `variables.env` file.
+  
+  - **In production** (`NODE_ENV=production`), read configurations from `configs/environments/production.ts` file, but it will still be overwritten by `variables.env` file.
+
 ### Reference
+
+- [how to validate params](https://github.com/typestack/class-validator)
 - [routing-controller](https://github.com/typestack/routing-controllers)
 - [typedi](https://github.com/typestack/typedi)
 - [typeorm](https://github.com/typeorm/typeorm)
