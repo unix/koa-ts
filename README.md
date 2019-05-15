@@ -10,9 +10,11 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 2. Install dependencies: `yarn` or `npm i`.
 
-3. **[Optional]** if you need database, set *useMongoDB* to true.(in `configs/customs.ts`).
+3. Lift srever: `yarn start` or `npm start`. visit: http://127.0.0.1:3000/apis/sessions
 
-4. **[Optional]** the project has built-in a docker-compose, run `npm run mongo` lift mongodb automatic.
+&nbsp;&nbsp;**[Optional]** if you need database, set *useMongoDB* to true.(in `configs/customs.ts`).
+
+&nbsp;&nbsp;**[Optional]** the project has built-in a docker-compose, run `npm run mongo` lift mongodb automatic.
 <br>
 
 ### Catalog

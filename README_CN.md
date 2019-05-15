@@ -10,9 +10,11 @@
 
 2. 安装依赖: `yarn` 或 `npm i`。
 
-3. **[可选]** 如果你需要数据库，请设置 `useMongoDB = true` (在 `configs/customs.ts` 文件中)。
+3. 挂起服务：`yarn start` 或 `npm start`，访问 http://127.0.0.1:3000/apis/sessions 示例。
 
-4. **[可选]** 项目内置了 docker-compose 数据库，可以使用 `npm run mongo` 自动挂起 mongo (如果您已有 docker / docker-compose)。
+&nbsp;&nbsp;**[可选]** 如果你需要数据库，请设置 `useMongoDB = true` (在 `configs/customs.ts` 文件中)。
+
+&nbsp;&nbsp;**[可选]** 项目内置了 docker-compose 数据库，可以使用 `npm run mongo` 自动挂起 mongo (如果您已有 docker / docker-compose)。
 
 <br>
 
