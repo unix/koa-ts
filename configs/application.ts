@@ -13,9 +13,11 @@ export const createServer = async(): Promise<Koa> => {
   
   const koa: Koa = new Koa()
   
+  useMiddlewares(koa)
+  
   const app: Koa = useKoaServer<Koa>(koa, routingConfigs)
   
   useContainer(Container)
   
-  return useMiddlewares(app)
+  return app
 }
