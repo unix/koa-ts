@@ -10,7 +10,7 @@
     "build": "bash ./build.sh",
     "mongo": "docker-compose -f compose.yml up -d"
   },
-  "author": "WittBulter (nanazuimeng123@gmail.com)",
+  "author": "WittBulter (lambdas.dev@gmail.com)",
   "bugs": {
     "url": "https://github.com/WittBulter/koa2-typescript-guide/issues"
   },
@@ -21,7 +21,6 @@
     "lint"
   ],
   "devDependencies": {
-    "@haifeng-fe/tslint-config": "^1.0.0",
     "@types/chai": "^4.1.2",
     "@types/chai-http": "^3.0.4",
     "@types/koa": "^2.0.48",
@@ -37,6 +36,7 @@
     "ts-node": "^8.0.2",
     "tsconfig-paths": "^3.8.0",
     "tslint": "^5.14.0",
+    "tslint-config-lambdas": "^1.1.0",
     "typescript": "^3.3.4000"
   },
   "dependencies": {

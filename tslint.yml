@@ -1,4 +1,4 @@
-extends: '@haifeng-fe/tslint-config'
+extends: 'tslint-config-lambdas'
 
 linterOptions:
   exclude:
