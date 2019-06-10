@@ -23,8 +23,8 @@ export class Session extends BaseEntity {
   token: string
   
   @CreateDateColumn()
-  created_at: Date
+  createdAt: Date
   
   @UpdateDateColumn()
-  updated_at: Date
+  updatedAt: Date
 }
