@@ -1,12 +1,12 @@
-### koa2-typescript-guide
-the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
+### koa-ts
+The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 <br>
 
 #### Usage
 **required [NodeJS > 8.0](https://nodejs.org/)**
 
-1. Run `npx koa2-ts --name=hello`.
+1. Run `npm init koa-ts`.
 
 2. Install dependencies: `yarn` or `npm i`.
 
@@ -93,4 +93,4 @@ the best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 <br>
 
 ### LICENSE
-Licensed under the [MIT LICENSE](https://github.com/zeit-ui/vue/blob/master/LICENSE).
+Licensed under the [MIT LICENSE](./LICENSE).

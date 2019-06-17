@@ -1,5 +1,5 @@
 {
-  "name": "koa2-typescript-guide",
+  "name": "koa-ts",
   "version": "1.0.1",
   "description": "the best practice of building Koa2 with TypeScript",
   "main": "app.ts",
@@ -12,7 +12,7 @@
   },
   "author": "WittBulter (lambdas.dev@gmail.com)",
   "bugs": {
-    "url": "https://github.com/WittBulter/koa2-typescript-guide/issues"
+    "url": "https://github.com/WittBulter/koa-ts/issues"
   },
   "engines": {
     "node": ">= 8.10.0"

@@ -1,4 +1,4 @@
-## koa2-typescript-guide
+## koa-ts
 使用 TypeScript 构建 Koa2 项目的最佳实践.
 
 <br>
@@ -6,7 +6,7 @@
 ### 快速开始
 **项目依赖: [NodeJS > 8.0](https://nodejs.org/cn)**
 
-1. 在终端输入: `npx koa2-ts --name=myproject` 即可快速初始化。
+1. 在终端输入: `npm init koa-ts` 即可快速初始化。
 
 2. 安装依赖: `yarn` 或 `npm i`。
 
@@ -97,4 +97,4 @@
 <br>
 
 ### LICENSE
-[MIT](LICENSE)
+[MIT](./LICENSE)
