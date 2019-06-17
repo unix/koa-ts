@@ -1,6 +1,6 @@
 {
   "name": "koa-ts",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "the best practice of building Koa2 with TypeScript",
   "main": "app.ts",
   "scripts": {
