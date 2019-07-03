@@ -10,9 +10,9 @@
     "build": "bash ./build.sh",
     "mongo": "docker-compose -f compose.yml up -d"
   },
-  "author": "WittBulter (lambdas.dev@gmail.com)",
+  "author": "unix (lambdas.dev@gmail.com)",
   "bugs": {
-    "url": "https://github.com/WittBulter/koa-ts/issues"
+    "url": "https://github.com/unix/koa-ts/issues"
   },
   "engines": {
     "node": ">= 8.10.0"
