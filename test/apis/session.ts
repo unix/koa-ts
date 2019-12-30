@@ -8,7 +8,7 @@ describe('routers: session', (): void => {
   })
   
   it('should create a session', async(): Promise<void> => {
-    const res: ChaiHttp.Response = await this.server.get('/api/v1/sessions.json')
+    const res: ChaiHttp.Response = await this.server.get('/apis/sessions')
     expect(res.status).equal(200)
   })
   

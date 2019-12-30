@@ -1,7 +1,9 @@
 
 --recursive
 --require ./node_modules/ts-node/register
+--require ./node_modules/tsconfig-paths/register
 --ui bdd
 --timeout 60000
 --watch-extensions ts
 test/**/*.ts
+
