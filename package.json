@@ -15,7 +15,7 @@
     "url": "https://github.com/unix/koa-ts/issues"
   },
   "engines": {
-    "node": ">= 8.10.0"
+    "node": ">= 12.16.1"
   },
   "pre-commit": [
     "lint"
