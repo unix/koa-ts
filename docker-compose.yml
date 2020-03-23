@@ -1,14 +1,16 @@
-version: "2"
+version: 3
+
 services:
-  koa_ex.mongo:
+  db:
     image: tutum/mongodb:3.0
     ports:
-    - "27017:27017"
-    - "28017:28017"
+      - '27017:27017'
+      - '28017:28017'
     restart: always
     volumes:
-      - koa_ex_db:/data/db
+      - db:/data/db
     env_file:
       - ./variables.env
+
 volumes:
-  koa_ex_db:
+  db:
