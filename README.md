@@ -1,30 +1,33 @@
 ### koa-ts
+
 The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
-<br>
+---
 
 #### Usage
+
 **required [NodeJS > 8.0](https://nodejs.org/)**
 
 1. Run `npm init koa-ts`.
 
 2. Install dependencies: `yarn` or `npm i`.
 
-3. Lift srever: `yarn start` or `npm start`. visit: http://127.0.0.1:3000/apis/sessions
+3. Start the server: `yarn start` or `npm start`. visit: http://127.0.0.1:3000/apis/sessions
 
-&nbsp;&nbsp;**[Optional]** if you need database, set *useMongoDB* to true.(in `configs/customs.ts`).
+> **[Optional]** if you need database, set *useMongoDB* to true.(in `configs/customs.ts`).
 
-&nbsp;&nbsp;**[Optional]** the project has built-in a docker-compose, run `npm run mongo` lift mongodb automatic.
-<br>
+> **[Optional]** the project has built-in a docker-compose, run `npm run mongo` lift mongodb automatic.
 
-### Catalog
+---
+
+#### Project Layout
 
 ```
 ├── app
-│   ├── controllers         ---  contoller
+│   ├── controllers         ---  server controllers
 │   ├── helpers             ---  helper func (interceptor / error handler / validator...)
 │   ├── jobs                ---  task (periodic task / trigger task / email server...)
-│   ├── entities            ---  database entity (model)
+│   ├── entities            ---  database entities/models
 │   └── services            ---  adhesive controller and model
 ├── config
 │   ├── environments        ---  environment variable
@@ -41,9 +44,9 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 ├── variables.env           ---  environment file
 ```
 
-<br>
+---
 
-### Feature
+#### Feature
 
 - Separation configuration and business logic.
 
@@ -57,11 +60,11 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 - TypeScript hotload.
 
-<br>
+---
 
-### Lifecycle
+#### Lifecycle
 
-  1. `app.ts` -> collect env vars `environments` -> coolect env files `variables.env`
+  1. `app.ts` -> collect env vars `environments` -> collect env files `variables.env`
     
   2. envs ready, call `bootstrap.before()`
   
@@ -69,28 +72,30 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
   
   4. lift `routing-controllers` -> lift Koa middlewares -> register `Container` for DI
   
-  5. start `Koa`。invoke `bootstrap.after()` after startup
+  5. start Koa &amp; invoke `bootstrap.after()` after startup
   
   6. `configs/connection.ts` connected -> invoke `bootstrap.connected()`
 
-<br>
+---
 
-### About Environments
+#### About Environments
 
-  - **In development** (`NODE_ENV=development`), read configurations from `configs/environments/development.ts` file, but it will still be overwritten by `variables.env` file.
+  - **Development Mode** (`NODE_ENV=development`): read configurations from `configs/environments/development.ts` file, but it will still be overwritten by `variables.env` file.
   
-  - **In production** (`NODE_ENV=production`), read configurations from `configs/environments/production.ts` file, but it will still be overwritten by `variables.env` file.
+  - **Production Mode** (`NODE_ENV=production`): read configurations from `configs/environments/production.ts` file, but it will still be overwritten by `variables.env` file.
 
-<br>
+---
 
-### Reference
+#### Reference
 
-- [how to validate params](https://github.com/typestack/class-validator)
-- [routing-controller](https://github.com/typestack/routing-controllers)
+- [Parameter Validation](https://github.com/typestack/class-validator)
+- [routing-controllers](https://github.com/typestack/routing-controllers)
 - [typedi](https://github.com/typestack/typedi)
 - [typeorm](https://github.com/typeorm/typeorm)
 
-<br>
+---
 
-### LICENSE
-Licensed under the [MIT LICENSE](./LICENSE).
+#### LICENSE
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more info.
+
