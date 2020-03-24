@@ -7,6 +7,7 @@
   "scripts": {
     "test": "mocha",
     "lint": "eslint app/**/*.ts configs/**/*.ts app.ts",
+    "lint:fix": "eslint app/**/*.ts configs/**/*.ts app.ts --fix",
     "start": "export NODE_ENV=development; nodemon --config nodemon.json",
     "build": "bash ./build.sh",
     "mongo": "docker-compose -f compose.yml up -d",
