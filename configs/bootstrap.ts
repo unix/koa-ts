@@ -2,7 +2,6 @@ import { join } from 'path'
 import { print } from './utils'
 import * as dotenv from 'dotenv'
 
-
 // "before" will trigger before the app lift.
 export const before = (): object => {
   // solve ncc path link.
@@ -16,9 +15,7 @@ export const before = (): object => {
 }
 
 // "after" will trigger after the "container" lift.
-export const after = (): any => {
-}
+export const after = (): any => {}
 
 // "connected" will trigger after the connects completed.
-export const connected = (): any => {
-}
+export const connected = (): any => {}

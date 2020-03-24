@@ -8,4 +8,4 @@ const mongoConnect = createConnection().then(() =>
 
 Promise.all([mongoConnect])
   .then(bootstrap.connected)
-  .catch(error => console.log(error))
+  .catch((error) => console.log(error))

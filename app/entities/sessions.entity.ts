@@ -1,6 +1,10 @@
 import { MinLength, IsNotEmpty } from 'class-validator'
 import {
-  Entity, BaseEntity, ObjectIdColumn, CreateDateColumn, UpdateDateColumn,
+  Entity,
+  BaseEntity,
+  ObjectIdColumn,
+  CreateDateColumn,
+  UpdateDateColumn
 } from 'typeorm'
 
 /**
@@ -11,20 +15,19 @@ import {
 
 @Entity('sessions')
 export class Session extends BaseEntity {
-  
   @ObjectIdColumn()
   id: string
-  
+
   @MinLength(4, { message: 'username too short' })
   @IsNotEmpty({ message: 'must include username' })
   username: string
-  
+
   @MinLength(10)
   token: string
-  
+
   @CreateDateColumn()
   createdAt: Date
-  
+
   @UpdateDateColumn()
   updatedAt: Date
 }
