@@ -1,0 +1,6 @@
+{
+  "extends": ["eslint-config-ts-lambdas"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}
