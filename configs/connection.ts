@@ -2,10 +2,10 @@ import * as bootstrap from './bootstrap'
 import { print } from './utils'
 import { createConnection } from 'typeorm'
 
-const mongoConnect = createConnection().then(() =>
+const databaseConnect = createConnection().then(() =>
   print.log('database connected.')
 )
 
-Promise.all([mongoConnect])
+Promise.all([databaseConnect])
   .then(bootstrap.connected)
   .catch((error) => console.log(error))
