@@ -9,6 +9,6 @@ export default {
     MONGODB_PORT: 27017,
     MONGODB_USER: '',
     MONGODB_PASS: '',
-    MONGODB_DATABASE: ''
-  }
+    MONGODB_DATABASE: '',
+  },
 }

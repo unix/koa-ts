@@ -4,7 +4,7 @@ import {
   BaseEntity,
   ObjectIdColumn,
   CreateDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
 } from 'typeorm'
 
 /**
