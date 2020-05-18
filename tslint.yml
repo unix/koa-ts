@@ -1,7 +1,0 @@
-extends: 'tslint-config-lambdas'
-
-linterOptions:
-  exclude:
-    - 'dist/**'
-    - 'tmp/**'
-    - 'node_modules/**'

@@ -1,27 +1,12 @@
-import { Body, Get, JsonController, Post, QueryParam, UseInterceptor } from 'routing-controllers'
-import { Environment } from 'configs/environments'
-import { SessionsService } from '../services'
-import { Session } from '../entities'
-
+import { Get, JsonController, QueryParam } from 'routing-controllers'
+import Environment from 'configs/environments'
 
 @JsonController()
 export class SessionsController {
-  
-  constructor(
-    // private sessionsService: SessionsService,
-  ) {
-  }
-  
+  constructor() {}
+
   @Get('/sessions')
   async session(@QueryParam('username') username: string): Promise<any> {
-    
     return `hello on ${Environment.identity}.`
   }
-  
-  // If your need to use database, please set useMongoDB(in configs/customs.ts) to true.
-  // @Post('/sessions')
-  // async create(@Body() session: Session): Promise<any> {
-  //   const created = await this.sessionsService.create(session)
-  //   return { created }
-  // }
 }

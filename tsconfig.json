@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "allowJs": true,
     "module": "commonjs",
     "outDir": "./dist",
-    "sourceMap": true,
+    "lib": ["es2017"],
+    "emitDeclarationOnly": true,
     "removeComments": true,
     "noImplicitAny": false,
+    "esModuleInterop": true,
     "preserveConstEnums": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -16,10 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "configs": ["configs"],
-      "app": ["app"],
-      "services": ["app/services"],
-      "controllers": ["app/controllers"],
-      "entities": ["app/entities"]
+      "app": ["app"]
     }
   },
 

@@ -12,11 +12,11 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 2. Install dependencies: `yarn` or `npm i`.
 
-3. Start the server: `yarn start` or `npm start`. visit: http://127.0.0.1:3000/apis/sessions
+3. Start the server: `yarn dev` or `npm dev`. visit: http://127.0.0.1:3000/apis/sessions
 
-> **[Optional]** if you need database, set *useMongoDB* to true.(in `configs/customs.ts`).
+> **(Optional)** if you need database, set _useDatabase_ to true.(in `configs/customs.ts`).
 
-> **[Optional]** the project has built-in a docker-compose, run `npm run mongo` lift mongodb automatic.
+> **(Optional)** the project has built-in a docker-compose, run `npm run mongo` lift mongodb automatic.
 
 ---
 
@@ -39,8 +39,7 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 │   ├── customs             ---  user settings
 │   └── interceptors        ---  global interceptor
 │   └── utils               ---  pure functions for help
-└── test
-    └── apis                ---  test cases
+└── test                    ---  utils for testcase
 ├── variables.env           ---  environment file
 ```
 
@@ -64,25 +63,38 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 #### Lifecycle
 
-  1. `app.ts` -> collect env vars `environments` -> collect env files `variables.env`
-    
-  2. envs ready, call `bootstrap.before()`
-  
-  3. `configs/connection.ts` connecting external services (e.g. DB / Redis...)
-  
-  4. lift `routing-controllers` -> lift Koa middlewares -> register `Container` for DI
-  
-  5. start Koa &amp; invoke `bootstrap.after()` after startup
-  
-  6. `configs/connection.ts` connected -> invoke `bootstrap.connected()`
+1. `app.ts` -> collect env vars `environments` -> collect env files `variables.env`
+
+2. envs ready, call `bootstrap.before()`
+
+3. `configs/connection.ts` connecting external services (e.g. DB / Redis...)
+
+4. lift `routing-controllers` -> lift Koa middlewares -> register `Container` for DI
+
+5. start Koa &amp; invoke `bootstrap.after()` after startup
+
+6. `configs/connection.ts` connected -> invoke `bootstrap.connected()`
+
+
+---
+
+#### Databases
+
+You can link multiple databases (`mysql` / `mongo` etc.), each database can link configurations of multiple environments:
+
+1. The database will load the configs of `ormconfig.js` file.
+2. You can specify link configs of multiple environments under folder `configs/environments`.
+3. You can specify **encrypted information** in file `variables.env`.
+It is not recommended to add file `variables.env` to version control.
+4. You can still manually set `process.env` to override all environment variables.
 
 ---
 
 #### About Environments
 
-  - **Development Mode** (`NODE_ENV=development`): read configurations from `configs/environments/development.ts` file, but it will still be overwritten by `variables.env` file.
-  
-  - **Production Mode** (`NODE_ENV=production`): read configurations from `configs/environments/production.ts` file, but it will still be overwritten by `variables.env` file.
+- **Development Mode** (`NODE_ENV=development`): read configurations from `configs/environments/development.ts` file, but it will still be overwritten by `variables.env` file.
+
+- **Production Mode** (`NODE_ENV=production`): read configurations from `configs/environments/production.ts` file, but it will still be overwritten by `variables.env` file.
 
 ---
 
@@ -98,4 +110,3 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 #### LICENSE
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more info.
-

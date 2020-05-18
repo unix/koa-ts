@@ -1,15 +1,12 @@
 export default {
   identity: 'development',
-  
+
   port: 3000,
-  
-  // Will be overwritten by the Env configuration of file "variables.env"
-  mongo: {
-    MONGODB_HOST: '127.0.0.1',
-    MONGODB_PORT: 27017,
-    MONGODB_USER: '',
-    MONGODB_PASS: '',
-    MONGODB_DATABASE: '',
-  },
-  
+
+  DB_TYPE: 'mongodb',
+  MY_HOST: '127.0.0.1',
+  MY_PORT: 27017,
+  USERNAME: 'admin',
+  PASSWORD: 'admin',
+  DATABASE: 'koa_ex_db',
 }

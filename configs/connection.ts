@@ -1,26 +1,18 @@
-import * as entities from 'entities'
+import * as entities from 'app/entities'
 import * as bootstrap from './bootstrap'
 import { print } from './utils'
-import { Environment } from './environments'
-import { createConnection } from 'typeorm'
-const mongo = Environment.mongo
+import { createConnection, getConnectionOptions } from 'typeorm'
+;(async () => {
+  const connectionOptions = await getConnectionOptions()
+  const connection = await createConnection({
+    ...connectionOptions,
+    entities: Object.keys(entities).map(name => entities[name]),
+  })
+  if (connection.isConnected) {
+    print.log('database connected.')
+  } else {
+    print.danger('Database connection failed.')
+  }
 
-
-const mongoConnect = createConnection({
-  type: 'mongodb',
-  host: mongo.MONGODB_HOST,
-  port: mongo.MONGODB_PORT,
-  username: mongo.MONGODB_USER,
-  database: mongo.MONGODB_DATABASE,
-  password: mongo.MONGODB_PASS,
-  useNewUrlParser: true,
-  entities: Object.keys(entities).map(name => entities[name]),
-})
-.then(() => print.log('connected mongodb.'))
-
-
-Promise.all([
-  mongoConnect,
-])
-.then(bootstrap.connected)
-.catch(error => console.log(error))
+  bootstrap.connected()
+})().catch(error => console.log(error))
