@@ -1,0 +1,8 @@
+.github
+.next
+.now
+.circleci
+dist
+coverage
+*.json
+*.d.ts
