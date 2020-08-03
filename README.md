@@ -6,7 +6,7 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 #### Usage
 
-> **This layout requires NodeJS v10+**
+> **This layout requires NodeJS v12+**
 
 1. Run `npm init koa-ts`.
 
