@@ -6,7 +6,7 @@
 
 ### 快速开始
 
-**项目依赖: [NodeJS > 8.0](https://nodejs.org/cn)**
+**项目依赖: [NodeJS > 12.0](https://nodejs.org/cn)**
 
 1. 在终端输入: `npm init koa-ts` 即可快速初始化。
 
