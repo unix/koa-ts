@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "moduleResolution": "Node",
     "module": "commonjs",
-    "outDir": "./dist",
-    "lib": ["es2017"],
-    "emitDeclarationOnly": true,
+    "outDir": "./releases",
+    "lib": ["ESNext"],
     "removeComments": true,
     "noImplicitAny": false,
     "esModuleInterop": true,
@@ -19,12 +19,21 @@
     "paths": {
       "configs": ["configs"],
       "app": ["app"]
-    }
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" }
+    ]
   },
-
   "compileOnSave": false,
   "includes": [
-    "src/**/*"
+    "app/**/*",
+    "configs/**/*",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "files": [
+    "app.ts",
+    "configs/connection.ts"
   ],
   "exclude": [
     "node_modules",

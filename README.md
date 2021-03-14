@@ -75,18 +75,16 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 6. `configs/connection.ts` connected -> invoke `bootstrap.connected()`
 
-
 ---
 
 #### Databases
 
 You can link multiple databases (`mysql` / `mongo` etc.), each database can link configurations of multiple environments:
 
-1. The database will load the configs of `ormconfig.js` file.
-2. You can specify link configs of multiple environments under folder `configs/environments`.
-3. You can specify **encrypted information** in file `variables.env`.
-It is not recommended to add file `variables.env` to version control.
-4. You can still manually set `process.env` to override all environment variables.
+1. You can specify link configs of multiple environments under folder `configs/environments`.
+2. You can specify **encrypted information** in file `variables.env`.
+   It is not recommended to add file `variables.env` to version control.
+3. You can still manually set `process.env` to override all environment variables.
 
 ---
 
