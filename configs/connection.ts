@@ -1,13 +1,23 @@
 import * as entities from 'app/entities'
 import * as bootstrap from './bootstrap'
+import Environment from './environments'
 import { print } from './utils'
-import { createConnection, getConnectionOptions } from 'typeorm'
+import { ConnectionManager } from 'typeorm'
 ;(async () => {
-  const connectionOptions = await getConnectionOptions()
-  const connection = await createConnection({
-    ...connectionOptions,
+  const connectionManager = new ConnectionManager()
+  const connection = connectionManager.create({
+    type: Environment.DB_TYPE,
+    host: Environment.DB_HOST,
+    port: Environment.DB_PORT,
+    username: Environment.USERNAME,
+    password: Environment.PASSWORD,
+    database: Environment.DATABASE,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
     entities: Object.keys(entities).map(name => entities[name]),
   })
+
+  await connection.connect()
   if (connection.isConnected) {
     print.log('database connected.')
   } else {
