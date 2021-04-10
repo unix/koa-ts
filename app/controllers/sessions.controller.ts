@@ -1,12 +1,18 @@
-import { Get, JsonController, QueryParam } from 'routing-controllers'
-import Environment from 'configs/environments'
+import { BadRequestError, Post, JsonController, BodyParam } from 'routing-controllers'
+import { SessionsService } from '../services'
+import { Prisma } from '@prisma/client'
 
 @JsonController()
 export class SessionsController {
-  constructor() {}
+  constructor(private sessionsService: SessionsService) {}
 
-  @Get('/sessions')
-  async session(@QueryParam('username') username: string): Promise<any> {
-    return `hello on ${Environment.identity}.`
+  @Post('/sessions')
+  async create(
+    @BodyParam('username') name: string,
+  ): Promise<Prisma.SessionGetPayload<any>> {
+    if (!name) {
+      throw new BadRequestError('username is required')
+    }
+    return await this.sessionsService.create({ name })
   }
 }

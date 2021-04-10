@@ -1,16 +1,21 @@
-import { getMongoRepository, MongoRepository } from 'typeorm'
 import { Service } from 'typedi'
-import { Session } from 'app/entities'
+import prisma from 'app/helpers/client'
+import { Prisma } from '@prisma/client'
 
 @Service()
 export class SessionsService {
-  repository: MongoRepository<Session>
-
-  constructor() {
-    this.repository = getMongoRepository(Session)
-  }
-
-  async create(session: Session): Promise<Session> {
-    return await this.repository.save(session)
+  /**
+   * Type 'Prisma.SessionCreateInput' is automatically generated.
+   * Whenever you modify file 'prisma/schema.prisma' and then run command:
+   *   prisma generate
+   *   prisma migrate dev
+   * The types is automatically updated.
+   *
+   * About CRUD: https://www.prisma.io/docs/concepts/components/prisma-client/crud
+   */
+  async create(session: Prisma.SessionCreateInput) {
+    return prisma.session.create({
+      data: session,
+    })
   }
 }

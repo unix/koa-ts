@@ -1,14 +1,15 @@
-version: '2'
+version: '3.3'
+
 services:
-  koa_ex.mongo:
-    image: tutum/mongodb:3.0
-    ports:
-      - '27017:27017'
-      - '28017:28017'
-    restart: always
+  restapi.postgres:
+    image: postgres:13
     volumes:
-      - koa_ex_db:/data/db
+      - db_data:/var/lib/postgres
+    restart: always
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
     env_file:
-      - ./variables.env
+      - ./.env
+
 volumes:
-  koa_ex_db:
+  db_data: {}
