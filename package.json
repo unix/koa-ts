@@ -1,6 +1,6 @@
 {
   "name": "koa-ts",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "license": "MIT",
   "description": "The best practice of building Koa2 with TypeScript",
   "main": "app.ts",
