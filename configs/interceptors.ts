@@ -1,6 +1,8 @@
 import { InterceptorInterface, Action, Interceptor } from 'routing-controllers'
+import { Service } from 'typedi'
 
 @Interceptor()
+@Service()
 export class AutoAssignJSONInterceptor implements InterceptorInterface {
   intercept(action: Action, content: any): any {
     if (typeof content === 'object')
