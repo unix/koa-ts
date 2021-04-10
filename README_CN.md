@@ -2,6 +2,8 @@
 
 使用 TypeScript 构建 Koa2 项目的最佳实践.
 
+> v3.1 UPDATE: 我们使用 Prisma 代替了 typeorm，缩减运行时内存到原来的一半或是更低。
+
 <br>
 
 ### 快速开始
@@ -12,11 +14,11 @@
 
 2. 安装依赖: `yarn` 或 `npm i`。
 
-3. 挂起服务：`yarn dev` 或 `npm dev`，访问 http://127.0.0.1:3000/apis/sessions 示例。
+3. 运行 `prisma migrate dev` 迁移数据库模型。
 
-&nbsp;&nbsp;**(可选)** 如果你需要数据库，请设置 `useDatabase=true` (在 `configs/customs.ts` 文件中)。
+4. 挂起服务：`yarn dev` 或 `npm dev`，访问 http://127.0.0.1:3000/apis/sessions 示例。
 
-&nbsp;&nbsp;**(可选)** 项目内置了 docker-compose 数据库，可以使用 `npm run mongo` 自动挂起 mongo (如果您已有 docker / docker-compose)。
+&nbsp;&nbsp;**(可选)** 项目内置了 docker-compose 数据库，可以使用 `npm run compose` 自动挂起数据库 (如果您已有 docker / docker-compose)。
 
 <br>
 
@@ -34,9 +36,7 @@
 │   ├── koa.middlewares     ---  Koa 中间件配置
 │   ├── routing.middlewares ---  Routing Controller 中间件配置
 │   ├── routing.options     ---  Routing Controller 参数配置
-│   ├── connection          ---  数据库连接
 │   ├── bootstrap           ---  启动声明周期
-│   ├── customs             ---  用户的全局配置
 │   ├── interceptors        ---  全局的拦截器
 │   └── utils               ---  纯函数的帮助方法
 └── test                    ---  测试工具函数
@@ -55,7 +55,7 @@
 
 - 测试与 Lint 脚手架。
 
-- 使用 ncc 单文件部署。
+- 得益于 Prisma 的自动数据模型约束。
 
 - TypeScript hotload, 开发便捷。
 
@@ -67,24 +67,19 @@
 
 2. 准备完毕，调用 `bootstrap.before()`
 
-3. 如果启用，`configs/connection.ts` 开始链接外部服务 (如 DB、Redis)
+3. 挂载 `routing-controllers` -> 挂载 Koa 中间件 -> 注册 `Container`
 
-4. 挂载 `routing-controllers` -> 挂载 Koa 中间件 -> 注册 `Container`
-
-5. 启动 `Koa`。完毕调用 `bootstrap.after()`
-
-6. 如果启用，`configs/connection.ts` 链接完毕，调用 `bootstrap.connected()`
+4. 启动 `Koa`。完毕调用 `bootstrap.after()`
 
 <br>
 
 ### 数据库链接
 
-你可以连接多个不同类型的数据 (如 `mysql` / `mongo` 等等)，每种数据库的配置信息也能再分为多个环境：
+项目默认使用 Prisma 作为智能化 ORM 工具，支持 `PostgreSQL` / `MySQL` / `SQLite`。
 
-1. 应用将加载 `ormconfig.js` 文件作为默认的数据库连接配置信息。
-2. 你还可以在文件夹 `configs/environments` 下指定不同环境的链接信息。
-3. 你还可以在文件 `variables.env` 中指定 **私密或加密** 的链接信息，它们一般用于生产环境。也建议不要将 `variables.env` 文件加入版本控制。
-4. 此外，你还是可以手动设置 `process.env` 覆盖以上所有。
+- 你可以在文件 `.env` 中修改数据库的链接配置。
+- 每次编辑文件 `/prisma/schema.prisma` 修改模型后，建议运行 `prisma migrate dev` 来迁移数据库。
+- 每次编辑文件 `/prisma/schema.prisma` 修改模型后，建议运行 `prisma generate` 生成类型文件。
 
 <br>
 
@@ -94,16 +89,14 @@
 
 - **在生产环境中** (`NODE_ENV=production`): 自动从文件 `configs/environments/production.ts` 读取配置。
 
-- **任何环境**: 如果 `variables.env` 文件内存在同名常量，会覆盖上述 2 个环境配置文件。优先级最高。
+- **任何环境**: 如果 `.env` 文件内存在同名常量，会覆盖上述 2 个环境配置文件。优先级最高。
 
 <br>
 
 ### 文档参考
 
-- [how to validate params](https://github.com/typestack/class-validator)
-- [routing-controller](https://github.com/typestack/routing-controllers)
-- [typedi](https://github.com/typestack/typedi)
-- [typeorm](https://github.com/typeorm/typeorm)
+- [routing-controllers](https://github.com/typestack/routing-controllers)
+- [Prisma](https://www.prisma.io/docs/concepts)
 
 <br>
 

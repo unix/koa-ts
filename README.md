@@ -2,6 +2,8 @@
 
 The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
+> v3.1 UPDATE: We used Prisma instead of typeorm, reduced runtime memory requirements to half that of the previous version.
+
 ---
 
 #### Usage
@@ -12,11 +14,11 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 2. Install dependencies: `yarn` or `npm i`.
 
-3. Start the server: `yarn dev` or `npm dev`. visit: http://127.0.0.1:3000/apis/sessions
+3. Run `prisma migrate dev` to synchronize the data model.
 
-> **(Optional)** if you need database, set _useDatabase_ to true.(in `configs/customs.ts`).
+4. Start the server: `yarn dev` or `npm dev`. visit: http://127.0.0.1:3000/apis/sessions
 
-> **(Optional)** the project has built-in a docker-compose, run `npm run mongo` lift mongodb automatic.
+> **(Optional)** the project has built-in a docker-compose, run `npm run compose` lift database automatic.
 
 ---
 
@@ -34,13 +36,11 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 │   ├── koa.middlewares     ---  middlewares for Koa
 │   ├── routing.middlewares ---  middlewares for Routing Controller
 │   ├── routing.options     ---  configs for Routing Controller
-│   ├── connection          ---  database connection
 │   ├── bootstrap           ---  lifecycle
-│   ├── customs             ---  user settings
 │   └── interceptors        ---  global interceptor
 │   └── utils               ---  pure functions for help
 └── test                    ---  utils for testcase
-├── variables.env           ---  environment file
+├── .env           ---  environment file
 ```
 
 ---
@@ -55,7 +55,7 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 - The best practice for Dependency Injection in Koa project.
 
-- Deploy by ncc.
+- Get constraints on your data model with Prisma.
 
 - TypeScript hotload.
 
@@ -67,41 +67,34 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 2. envs ready, call `bootstrap.before()`
 
-3. `configs/connection.ts` connecting external services (e.g. DB / Redis...)
+3. lift `routing-controllers` -> lift Koa middlewares -> register `Container` for DI
 
-4. lift `routing-controllers` -> lift Koa middlewares -> register `Container` for DI
-
-5. start Koa &amp; invoke `bootstrap.after()` after startup
-
-6. `configs/connection.ts` connected -> invoke `bootstrap.connected()`
+4. start Koa &amp; invoke `bootstrap.after()` after startup
 
 ---
 
 #### Databases
 
-You can link multiple databases (`mysql` / `mongo` etc.), each database can link configurations of multiple environments:
+The project uses Prisma as the intelligent ORM tool by default. Supports `PostgreSQL`, `MySQL` and `SQLite`.
 
-1. You can specify link configs of multiple environments under folder `configs/environments`.
-2. You can specify **encrypted information** in file `variables.env`.
-   It is not recommended to add file `variables.env` to version control.
-3. You can still manually set `process.env` to override all environment variables.
+- You can change the data type and connection method in the `.env` file
+- After each modification to file `/prisma/schema.prisma`, you need to run `prisma migrate dev` to migrate the database.
+- After each modification to file `/prisma/schema.prisma`, you need to run `prisma generate` to sync types.
 
 ---
 
 #### About Environments
 
-- **Development Mode** (`NODE_ENV=development`): read configurations from `configs/environments/development.ts` file, but it will still be overwritten by `variables.env` file.
+- **Development Mode** (`NODE_ENV=development`): read configurations from `configs/environments/development.ts` file, but it will still be overwritten by `.env` file.
 
-- **Production Mode** (`NODE_ENV=production`): read configurations from `configs/environments/production.ts` file, but it will still be overwritten by `variables.env` file.
+- **Production Mode** (`NODE_ENV=production`): read configurations from `configs/environments/production.ts` file, but it will still be overwritten by `.env` file.
 
 ---
 
 #### Reference
 
-- [Parameter Validation](https://github.com/typestack/class-validator)
 - [routing-controllers](https://github.com/typestack/routing-controllers)
-- [typedi](https://github.com/typestack/typedi)
-- [typeorm](https://github.com/typeorm/typeorm)
+- [Prisma](https://www.prisma.io/docs/concepts)
 
 ---
 
