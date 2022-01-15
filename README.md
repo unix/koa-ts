@@ -6,11 +6,11 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 #### Usage
 
-1. Run `npm init koa-ts`.
+1. Run `npm init koa-ts`
 
-2. Install dependencies: `yarn`.
+2. Install dependencies: `yarn`
 
-3. Rename `.env.example` to `.env`, and run `prisma db push` to synchronize the data model.
+3. Rename `.env.example` to `.env`, and run `prisma db push` to synchronize the data model
 
 4. Start the server: `yarn dev`. visit: http://127.0.0.1:3000/apis/sessions
 
