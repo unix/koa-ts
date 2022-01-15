@@ -81,9 +81,17 @@ The project uses Prisma as the intelligent ORM tool by default. Supports `Postgr
 
 #### About Environments
 
-- **Development Mode** (`NODE_ENV=development`): read configurations from `configs/constants/development.ts` file, but it will still be overwritten by `.env` file.
+When nodejs is running, `ENV` does not mean `NODE_ENV`:
 
-- **Production Mode** (`NODE_ENV=production`): read configurations from `configs/constants/production.ts` file, but it will still be overwritten by `.env` file.
+- After NodeJS project is built, we always run it as `NODE_ENV=PRODUCTION`, which may affect some framework optimizations.
+- `NODE_ENV` only identifies the NodeJS runtime, independent of the business.
+- You should use `ENV` to identify the environment.
+
+For the data settings of each environment, you can refer to the following:
+
+- **Development Mode** (`ENV=development`): read configurations from `configs/constants/development.ts` file, but it will still be overwritten by `.env` file.
+
+- **Production Mode** (`ENV=production`): read configurations from `configs/constants/production.ts` file, but it will still be overwritten by `.env` file.
 
 ---
 

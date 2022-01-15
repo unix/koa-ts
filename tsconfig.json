@@ -3,9 +3,10 @@
     "allowJs": true,
     "moduleResolution": "Node",
     "module": "commonjs",
-    "outDir": "./releases",
+    "outDir": "./dist",
     "lib": ["ESNext"],
     "removeComments": true,
+    "skipLibCheck": true,
     "noImplicitAny": false,
     "esModuleInterop": true,
     "preserveConstEnums": true,
@@ -17,12 +18,9 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "configs": ["configs"],
+      "configs/*": ["./configs/*"],
       "app": ["app"]
     },
-    "plugins": [
-      { "transform": "typescript-transform-paths" }
-    ]
   },
   "compileOnSave": false,
   "includes": [
@@ -33,7 +31,6 @@
   ],
   "files": [
     "app.ts",
-    "configs/connection.ts"
   ],
   "exclude": [
     "node_modules",

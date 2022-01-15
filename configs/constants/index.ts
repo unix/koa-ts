@@ -2,48 +2,34 @@ import { bootstrapBefore } from '../bootstrap'
 import development, { EevRecord } from './development'
 import staging from './staging'
 import production from './production'
+import { ENVS } from './envs'
 
 const parsedEnvs = bootstrapBefore()
 
-export type Envs = {
-  DEVELOPMENT: boolean
-  STAGING: boolean
-  PRODUCTION: boolean
-}
-
-const getCurrentEnv = (): Envs => {
+const getCurrentEnv = (): ENVS => {
   const env = process.env?.ENV
-  const up = `${env}`.toUpperCase()
-  const currentEnvs: Envs = {
-    DEVELOPMENT: false,
-    STAGING: false,
-    PRODUCTION: false,
+  if (typeof env === 'undefined') {
+    console.warn(`/n> ENV is not set, fallback to ${ENVS.DEVELOPMENT}.`)
   }
-  if (up === 'PRODUCTION')
-    return {
-      ...currentEnvs,
-      PRODUCTION: true,
-    }
-  if (up === 'STAGING')
-    return {
-      ...currentEnvs,
-      STAGING: true,
-    }
-  return {
-    ...currentEnvs,
-    DEVELOPMENT: true,
-  }
+  const upperCaseEnv = `${env}`.toUpperCase()
+  if (upperCaseEnv === ENVS.PRODUCTION) return ENVS.PRODUCTION
+  if (upperCaseEnv === ENVS.STAGING) return ENVS.STAGING
+  return ENVS.DEVELOPMENT
 }
 
-export type CurrentConstants = EevRecord
-
-const getCurrentConstants = (envs: Envs): EevRecord => {
+const getCurrentConstants = (ident: ENVS): EevRecord => {
   let constants = development
-  const source = envs.PRODUCTION ? production : envs.STAGING ? staging : development
+  const source =
+    ident === ENVS.PRODUCTION
+      ? production
+      : ident === ENVS.STAGING
+      ? staging
+      : development
   Object.keys(development).forEach(key => {
     const sourceValue = source[key]
     const processValue = process.env[key]
     const parsedValue = parsedEnvs[key]
+
     if (typeof sourceValue !== 'undefined') {
       constants[key] = sourceValue
     }
@@ -55,9 +41,14 @@ const getCurrentConstants = (envs: Envs): EevRecord => {
     }
   })
 
+  constants.ENV_LABEL = source.ENV_LABEL
+
   return constants
 }
 
 export const CURRENT_ENV = getCurrentEnv()
+
+export const isProd = () => CURRENT_ENV === ENVS.PRODUCTION
 const CONSTANTS = getCurrentConstants(CURRENT_ENV)
+
 export default CONSTANTS

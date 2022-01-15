@@ -81,9 +81,17 @@
 
 ### 关于环境变量
 
-- **在开发环境中** (`NODE_ENV=development`)：自动从文件 `configs/constants/development.ts` 读取配置。
+在 NodeJS 运行中，`ENV` 并不等于 `NODE_ENV`：
 
-- **在生产环境中** (`NODE_ENV=production`): 自动从文件 `configs/constants/production.ts` 读取配置。
+- 当 NodeJS 项目被 build 后 (如在服务端运行)，总是设置 `NODE_ENV=PRODUCTION`，这会影响一些第三方库的优化。
+- `NODE_ENV` 只用于鉴别 NodeJS 运行，与你的业务环境无关。
+- 推荐你总是使用 `ENV` 来鉴别当前的环境。
+
+对于每个环境的数据设置，可以参考如下：
+
+- **在开发环境中** (`ENV=development`)：自动从文件 `configs/constants/development.ts` 读取配置。
+
+- **在生产环境中** (`ENV=production`): 自动从文件 `configs/constants/production.ts` 读取配置。
 
 - **任何环境**: 如果 `.env` 文件内存在同名常量，会覆盖上述 2 个环境配置文件。优先级最高。
 
