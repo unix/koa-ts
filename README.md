@@ -2,23 +2,19 @@
 
 The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
-> v3.1 UPDATE: We used Prisma instead of typeorm, reduced runtime memory requirements to half that of the previous version.
-
 ---
 
 #### Usage
 
-> **This layout requires NodeJS v12+**
-
 1. Run `npm init koa-ts`.
 
-2. Install dependencies: `yarn` or `npm i`.
+2. Install dependencies: `yarn`.
 
-3. Run `prisma migrate dev` to synchronize the data model.
+3. Rename `.env.example` to `.env`, and run `prisma db push` to synchronize the data model.
 
-4. Start the server: `yarn dev` or `npm dev`. visit: http://127.0.0.1:3000/apis/sessions
+4. Start the server: `yarn dev`. visit: http://127.0.0.1:3000/apis/sessions
 
-> **(Optional)** the project has built-in a docker-compose, run `npm run compose` lift database automatic.
+> **(Optional)** the project has built-in a docker compose, run `yarn dev:db` to run database automatic.
 
 ---
 
@@ -32,7 +28,7 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 │   ├── entities            ---  database entities/models
 │   └── services            ---  adhesive controller and model
 ├── config
-│   ├── environments        ---  environment variable
+│   ├── constants        ---  environment variable
 │   ├── koa.middlewares     ---  middlewares for Koa
 │   ├── routing.middlewares ---  middlewares for Routing Controller
 │   ├── routing.options     ---  configs for Routing Controller
@@ -63,7 +59,7 @@ The best practice of building Koa2 with TypeScript. [中文](/README_CN.md)
 
 #### Lifecycle
 
-1. `app.ts` -> collect env vars `environments` -> collect env files `variables.env`
+1. `app.ts` -> collect env vars `constants` -> collect env files `variables.env`
 
 2. envs ready, call `bootstrap.before()`
 
@@ -85,9 +81,9 @@ The project uses Prisma as the intelligent ORM tool by default. Supports `Postgr
 
 #### About Environments
 
-- **Development Mode** (`NODE_ENV=development`): read configurations from `configs/environments/development.ts` file, but it will still be overwritten by `.env` file.
+- **Development Mode** (`NODE_ENV=development`): read configurations from `configs/constants/development.ts` file, but it will still be overwritten by `.env` file.
 
-- **Production Mode** (`NODE_ENV=production`): read configurations from `configs/environments/production.ts` file, but it will still be overwritten by `.env` file.
+- **Production Mode** (`NODE_ENV=production`): read configurations from `configs/constants/production.ts` file, but it will still be overwritten by `.env` file.
 
 ---
 

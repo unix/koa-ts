@@ -2,23 +2,19 @@
 
 使用 TypeScript 构建 Koa2 项目的最佳实践.
 
-> v3.1 UPDATE: 我们使用 Prisma 代替了 typeorm，缩减运行时内存到原来的一半或是更低。
-
 <br>
 
 ### 快速开始
 
-**项目依赖: [NodeJS > 12.0](https://nodejs.org/cn)**
+1. 在终端输入: `npm init koa-ts` 初始化项目模板
 
-1. 在终端输入: `npm init koa-ts` 即可快速初始化。
+2. 安装依赖: `yarn`
 
-2. 安装依赖: `yarn` 或 `npm i`。
+3. 重命名 `.env.example` 为 `.env`，随后运行 `prisma db push` 迁移数据库模型
 
-3. 运行 `prisma migrate dev` 迁移数据库模型。
+4. 运行服务：`yarn dev`，访问 http://127.0.0.1:3000/apis/sessions
 
-4. 挂起服务：`yarn dev` 或 `npm dev`，访问 http://127.0.0.1:3000/apis/sessions 示例。
-
-&nbsp;&nbsp;**(可选)** 项目内置了 docker-compose 数据库，可以使用 `npm run compose` 自动挂起数据库 (如果您已有 docker / docker-compose)。
+&nbsp;&nbsp;**(可选)** 项目为开发环境内置 compose，运行 `yarn dev:db` 启动 (如果您已有 docker)
 
 <br>
 
@@ -32,7 +28,7 @@
 │   ├── entities            ---  数据实体，数据库模型文件
 │   └── services            ---  controller 与 model 的粘合层 (提拱一些实用方法...)
 ├── config
-│   ├── environments        ---  环境配置
+│   ├── constants        ---  环境配置
 │   ├── koa.middlewares     ---  Koa 中间件配置
 │   ├── routing.middlewares ---  Routing Controller 中间件配置
 │   ├── routing.options     ---  Routing Controller 参数配置
@@ -47,23 +43,23 @@
 
 ### 特性
 
-- 业务逻辑与配置分离，一目了然。
+- 业务逻辑与配置分离，一目了然
 
-- scheme model 等同于 interface，更符合 TS 的代码风格。
+- scheme model 等同于 interface，更符合 TS 的代码风格
 
-- 依赖注入在 Koa 项目中的最佳实践。
+- 依赖注入在 Koa 项目中的最佳实践
 
-- 测试与 Lint 脚手架。
+- 测试与 Lint 脚手架
 
-- 得益于 Prisma 的自动数据模型约束。
+- 得益于 Prisma 的自动数据模型约束
 
-- TypeScript hotload, 开发便捷。
+- TypeScript hot-load, 开发便捷
 
 <br>
 
 ### 生命周期参考
 
-1. 调用 `app.ts` -> 准备环境变量 `environments` -> 获取环境文件 `variables.env`
+1. 调用 `app.ts` -> 准备环境变量 `constants` -> 获取环境文件 `variables.env`
 
 2. 准备完毕，调用 `bootstrap.before()`
 
@@ -85,9 +81,9 @@
 
 ### 关于环境变量
 
-- **在开发环境中** (`NODE_ENV=development`)：自动从文件 `configs/environments/development.ts` 读取配置。
+- **在开发环境中** (`NODE_ENV=development`)：自动从文件 `configs/constants/development.ts` 读取配置。
 
-- **在生产环境中** (`NODE_ENV=production`): 自动从文件 `configs/environments/production.ts` 读取配置。
+- **在生产环境中** (`NODE_ENV=production`): 自动从文件 `configs/constants/production.ts` 读取配置。
 
 - **任何环境**: 如果 `.env` 文件内存在同名常量，会覆盖上述 2 个环境配置文件。优先级最高。
 
