@@ -1,10 +1,10 @@
 import Koa from 'koa'
 import logger from 'koa-logger'
 import bodyParser from 'koa-bodyparser'
-import Environment from './environments'
+import Environment from './constants'
 
 export const useMiddlewares = <T extends Koa>(app: T): T => {
-  Environment.identity !== 'test' && app.use(logger())
+  Environment.ENV_LABEL === 'PRODUCTION' && app.use(logger())
 
   app.use(bodyParser())
 
