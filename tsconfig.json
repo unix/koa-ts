@@ -23,7 +23,7 @@
     },
   },
   "compileOnSave": false,
-  "includes": [
+  "include": [
     "app/**/*",
     "configs/**/*",
     "**/*.ts",
